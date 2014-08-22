@@ -1,5 +1,15 @@
 <div class="container-fluid">
 	<h1>Questions List</h1>
+	<form name="showing">
+	<p>
+		<h4>Search: <input ng-model="query.title" type="text"></input></h4>
+	</p>
+	<p>
+	
+		<input ng-model="sorter" type="radio" value="title"> Sort by title
+		<input ng-model="sorter" type="radio" value="id" > Sort by ID
+	</p>
+	</form>
 	<table class="table table-hover table-bordered" frame="box" style="width:auto">
 		<thead>
 			<tr class="danger">
@@ -7,8 +17,8 @@
 				<th>Title</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr ng-repeat="question in questions" ng-click="goat(question)" class="active">
+		<tbody ng-show="query.title">
+			<tr ng-repeat="question in questions | filter: query | orderBy:sorter" ng-click="goat(question)" class="active">
 				<td style="width:30px">{[{ question.id }]}</td>
 				<td>{[{ question.title }]}</td>
 			</tr>

@@ -24,6 +24,11 @@ questions.controller('ListCtrl', function ($scope, $http, $location){
 		});
 	};
 	
+	$scope.sorter = 'id';
+	$scope.field = 'title';
+	$scope.queryFunc = function(field) {
+		return field
+	}
 	$scope.loadQuestions();
 	
 	$scope.goat = function(question){
@@ -40,6 +45,7 @@ questions.controller('DetailCtrl', function ($scope, $http, $routeParams){
 				$scope.question = response.data;
 			});
 		};
+	$scope.cur = Number($routeParams.questionId);
 	$scope.loadQuestionDetail();
 	$scope.assaf = $routeParams.questionId
 });

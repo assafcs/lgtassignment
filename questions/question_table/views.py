@@ -33,6 +33,7 @@ def question_detail(request, pk):
             return Response(serializer.data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            pass
     elif request.method == 'DELETE':
         q.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
